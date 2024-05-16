@@ -1,4 +1,4 @@
-// This simple game written in Python moves an ":D" symbol on the screen with the arrow keys, the movement is continous while pressing the key, by releasing the key the movement will stop. You can exit it with the ESC button
+# This simple game written in Python moves an ":D" symbol on the screen with the arrow keys, the movement is continous while pressing the key, by releasing the key the movement will stop. You can exit it with the ESC button
 
 import pygame
 import sys
