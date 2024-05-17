@@ -1,0 +1,56 @@
+import pygame
+import random
+import sys
+
+# Initialize Pygame
+pygame.init()
+
+# Window size
+WIDTH, HEIGHT = 800, 600
+# Colors
+WHITE = (255, 255, 255)
+COLORS = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0), (255, 0, 255), (0, 255, 255)]
+
+# Create window
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Firework Effect")
+
+
+# Creating firework effect
+def fireworks():
+    x = random.randint(50, WIDTH - 50)
+    y = HEIGHT
+    speed = random.randint(1, 5)
+    size = random.randint(5, 20)
+    color = random.choice(COLORS)
+    pygame.draw.circle(screen, color, (x, y), size)
+    pygame.display.update()
+    for _ in range(20):
+        y -= speed * 5
+        size -= 1
+        pygame.draw.circle(screen, color, (x, y), size)
+        pygame.display.update()
+        pygame.time.delay(30)
+
+
+# Main Cycle
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+            running = False
+
+    # Delete background
+    screen.fill(WHITE)
+
+    # Creating firework effects
+    fireworks()
+
+    # Refresh the screen
+    pygame.display.flip()
+
+# Exit from Pygame
+pygame.quit()
+sys.exit()
